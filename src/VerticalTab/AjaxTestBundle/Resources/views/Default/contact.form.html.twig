@@ -26,13 +26,32 @@
         };
         
         $('form').live('submit', function() {
-            var content = $('.ajax-content');
             $.blockUI();
-            $.post($(this).attr('action'), function(data){
-                content.html(data);
-                $.unblockUI();
-                showMessages();
+            var url = $(this).attr('action');
+            
+            $.ajax({
+                url: url,
+                type: 'post',
+                data: $(this).serialize(),
+                success: function(data) {
+                    if (typeof(data) === 'string') {
+                        $('.ajax-content').html(data);
+                    } else {
+                        //you might use some lib/plugin here instead
+                        $('#form_id').val(data['id']);
+                        $('#form_firstName').val(data['firstName']);
+                        $('#form_lastName').val(data['lastName']);
+                        $('#form_phone').val(data['phone']);
+                        $('#form_street').val(data['street']);
+                        $('#form_city').val(data['city']);
+                        $('#form_state').val(data['state']);
+                    }
+                    
+                    $.unblockUI();
+                    showMessages();
+                }
             });
+            
             return false;
         });
     });

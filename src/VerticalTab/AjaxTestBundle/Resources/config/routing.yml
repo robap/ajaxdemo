@@ -9,7 +9,8 @@ vertical_tab_ajax_test_save:
       _method: POST
     
 vertical_tab_ajax_test_show:
-    pattern: /contact/{id}
-    defaults: { _controller: VerticalTabAjaxTestBundle:Default:show }
+    pattern: /contact/{id}.{format}
+    defaults: { _controller: VerticalTabAjaxTestBundle:Default:show, format: html }
     requirements:
       _method: GET
+      format: (json|html)
