@@ -35,7 +35,7 @@ class DefaultController extends Controller
         $form = $this->getForm();
         $form->bind($request);
         $data = $form->getData();
-        $format = $data['format'];
+        $format = urlencode($data['format']);
         
         return $this->redirect($this->get('router')
                 ->generate('vertical_tab_ajax_test_show', array('id' => '1', 'format' => $format)));
