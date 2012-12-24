@@ -1,0 +1,7 @@
+parameters:
+#    vertical_tab_ajax_test.example.class: VerticalTab\AjaxTestBundle\Example
+
+services:
+#    vertical_tab_ajax_test.example:
+#        class: %vertical_tab_ajax_test.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,15 @@
+vertical_tab_ajax_test_homepage:
+    pattern:  /
+    defaults: { _controller: VerticalTabAjaxTestBundle:Default:index }
+    
+vertical_tab_ajax_test_save:
+    pattern: /contact/save
+    defaults: { _controller: VerticalTabAjaxTestBundle:Default:save }
+    requirements:
+      _method: POST
+    
+vertical_tab_ajax_test_show:
+    pattern: /contact/{id}
+    defaults: { _controller: VerticalTabAjaxTestBundle:Default:show }
+    requirements:
+      _method: GET

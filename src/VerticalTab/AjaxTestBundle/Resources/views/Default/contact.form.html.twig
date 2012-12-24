@@ -1,0 +1,40 @@
+{% extends ajax ? '::ajax.base.html.twig' : '::base.html.twig' %}
+
+{% block body %}
+<div class="ajax-content">
+    <div class="messages">
+        {% for messages in session.getFlashBag().all() %}
+            {% for message in messages %}
+                <div class="message">{{ message }}</div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+    <form class="std-form" action="{{ path('vertical_tab_ajax_test_save') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <input type="submit" />
+    </form>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('assets/js/vendor/jquery.blockUI.js') }}"></script>
+<script type="text/javascript">
+    //sample js for demonstration purposes.
+    $(document).ready(function() {
+        function showMessages() {
+            $('.messages').fadeIn('slow').delay(2000).fadeOut('slow');
+        };
+        
+        $('form').live('submit', function() {
+            var content = $('.ajax-content');
+            $.blockUI();
+            $.post($(this).attr('action'), function(data){
+                content.html(data);
+                $.unblockUI();
+                showMessages();
+            });
+            return false;
+        });
+    });
+</script>
+{% endblock %}
