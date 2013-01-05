@@ -5,3 +5,4 @@ web1:
         - "rm web/app_dev.php"
         - "mv web/app.php web/index.php"
         - "curl -s https://getcomposer.org/installer | php"
+        - "php composer.phar install"
