@@ -1,0 +1,3 @@
+web1:
+    name: ajaxdemo
+    document_root: /web
