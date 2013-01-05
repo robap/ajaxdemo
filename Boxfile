@@ -1,12 +1,25 @@
 web1:
     name: ajaxdemo
-    document_root: /web
+    document_root: web
+    default_gateway: app.php
+    index_list: [app.php]
+    shared_writable_dirs:
+        - app/cache
+        - app/logs
     php_extensions:
         - zip
+        - intl
+        - mbstring
+        - xsl
+        - apc
+        - mysql
+        - posix
+        - iconv
+        - tokenizer
+        - xml
+        - pdo_mysql
+    magic_quotes_gpc: Off
     after_build:
         - "rm web/app_dev.php"
-        - "mv web/app.php web/index.php"
-        - "mkdir app/cache && chmod 777 app/cache"
-        - "mkdir app/logs && chmod 777 app/logs"
         - "curl -s https://getcomposer.org/installer | php"
         - "php composer.phar install"
