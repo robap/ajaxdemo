@@ -1,6 +1,6 @@
 {
-    "name": "symfony/framework-standard-edition",
-    "description": "The \"Symfony Standard Edition\" distribution",
+    "name": "my ajax demo",
+    "description": "My Ajax Demo App",
     "autoload": {
         "psr-0": { "": "src/" }
     },
