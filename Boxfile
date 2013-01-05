@@ -1,3 +1,6 @@
 web1:
     name: ajaxdemo
     document_root: /web
+    after_build:
+        - "rm web/app_dev.php"
+        - "mv web/app.php web/index.php"
