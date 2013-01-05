@@ -13,14 +13,9 @@ web1:
         - xsl
         - apc
         - mysql
-        - posix
-        - iconv
-        - tokenizer
-        - xml
         - pdo_mysql
     magic_quotes_gpc: Off
     after_build:
         - "rm web/app_dev.php"
-        - "mv web/app.php web/index.php"
         - "curl -s https://getcomposer.org/installer | php"
         - "php composer.phar install"
